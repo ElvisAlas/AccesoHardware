@@ -6,8 +6,19 @@ import CreateFileModal from './CreateFileModal';
 import ViewFileModal from './ViewFileModal';
 
 const iconMap = {
-  // ...
-};
+    txt: 'file-document',
+    pdf: 'file-pdf',
+    doc: 'file-word',
+    docx: 'file-word',
+    xls: 'file-excel',
+    xlsx: 'file-excel',
+    jpg: 'file-image',
+    png: 'file-image',
+    gif: 'file-image',
+    mp4: 'file-video',
+    mp3: 'file-music',
+    default: 'file'
+  };
 
 const StorageAccess = () => {
   const [fileList, setFileList] = useState([]);
@@ -30,7 +41,8 @@ const StorageAccess = () => {
   };
 
   const getFileIcon = (filename) => {
-    // ...
+    const extension = filename.split('.').pop();
+    return iconMap[extension.toLowerCase()] || iconMap['default'];
   };
 
   const handleCreateFile = async () => {
@@ -50,7 +62,7 @@ const StorageAccess = () => {
 
   return (
     <View style={styles.container}>
-      <Button title="Acceder al almacenamiento" onPress={() => setCreateModalVisible(true)} />
+     
       <Button title="Crear archivo" onPress={handleCreateFile} />
       <Text style={styles.heading}>Archivos guardados:</Text>
       <FlatList
