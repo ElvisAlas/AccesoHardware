@@ -1,7 +1,8 @@
-// CreateFileModal.js
+
 import React, { useState } from 'react';
-import { Modal, View, Text, TextInput, Button, StyleSheet } from 'react-native';
+import { Modal, View, Text, TextInput, Button ,StyleSheet} from 'react-native';
 import * as FileSystem from 'expo-file-system';
+import modalStyles from '../style/modal';
 
 const CreateFileModal = ({ visible, setVisible, fetchFiles }) => {
   const [fileName, setFileName] = useState('');
@@ -22,24 +23,24 @@ const CreateFileModal = ({ visible, setVisible, fetchFiles }) => {
   };
 
   return (
-    <Modal
+    <Modal 
       animationType="slide"
       transparent={true}
       visible={visible}
       onRequestClose={() => setVisible(false)}
     >
-      <View style={styles.modalContainer}>
-        <View style={styles.modalContent}>
-          <Text style={styles.modalText}>Nombre del archivo:</Text>
+      <View style={modalStyles.modalContainer}>
+        <View style={modalStyles.modalContent}>
+          <Text style={modalStyles.modalText}>Nombre del archivo:</Text>
           <TextInput
-            style={styles.input}
+            style={modalStyles.input}
             placeholder="Nombre del archivo"
             value={fileName}
             onChangeText={text => setFileName(text)}
           />
-          <Text style={styles.modalText}>Contenido del archivo:</Text>
+          <Text style={modalStyles.modalText}>Contenido del archivo:</Text>
           <TextInput
-            style={[styles.input, { height: 100 }]}
+            style={[modalStyles.input, { height: 100 }]}
             placeholder="Contenido del archivo"
             multiline={true}
             value={fileContent}
@@ -52,31 +53,5 @@ const CreateFileModal = ({ visible, setVisible, fetchFiles }) => {
   );
 };
 
-const styles = StyleSheet.create({
-  modalContainer: {
-    flex: 1,
-    justifyContent: 'center',
-    alignItems: 'center',
-    backgroundColor: 'rgba(0, 0, 0, 0.5)',
-  },
-  modalContent: {
-    backgroundColor: '#fff',
-    padding: 20,
-    borderRadius: 10,
-    elevation: 5,
-    minWidth: 300,
-  },
-  modalText: {
-    fontSize: 16,
-    marginBottom: 10,
-  },
-  input: {
-    borderWidth: 1,
-    borderColor: '#ccc',
-    borderRadius: 5,
-    padding: 10,
-    marginBottom: 15,
-  },
-});
-
+  
 export default CreateFileModal;

@@ -1,7 +1,7 @@
-// ViewFileModal.js
+
 import React from 'react';
 import { Modal, View, Text, TextInput, Button, StyleSheet } from 'react-native';
-
+import modalStyles from '../style/modal';
 const ViewFileModal = ({ visible, setVisible, fileName, fileContent }) => {
   return (
     <Modal
@@ -10,18 +10,18 @@ const ViewFileModal = ({ visible, setVisible, fileName, fileContent }) => {
       visible={visible}
       onRequestClose={() => setVisible(false)}
     >
-      <View style={styles.modalContainer}>
-        <View style={styles.modalContent}>
-          <Text style={styles.modalText}>Nombre del archivo:</Text>
+      <View style={modalStyles.modalContainer}>
+        <View style={modalStyles.modalContent}>
+          <Text style={modalStyles.modalText}>Nombre del archivo:</Text>
           <TextInput
-            style={styles.input}
+            style={modalStyles.input}
             placeholder="Nombre del archivo"
             value={fileName}
             editable={false}
           />
-          <Text style={styles.modalText}>Contenido del archivo:</Text>
+          <Text style={modalStyles.modalText}>Contenido del archivo:</Text>
           <TextInput
-            style={[styles.input, { height: 100 }]}
+            style={[modalStyles.input, { height: 100 }]}
             placeholder="Contenido del archivo"
             multiline={true}
             value={fileContent}
@@ -34,31 +34,5 @@ const ViewFileModal = ({ visible, setVisible, fileName, fileContent }) => {
   );
 };
 
-const styles = StyleSheet.create({
-  modalContainer: {
-    flex: 1,
-    justifyContent: 'center',
-    alignItems: 'center',
-    backgroundColor: 'rgba(0, 0, 0, 0.5)',
-  },
-  modalContent: {
-    backgroundColor: '#fff',
-    padding: 20,
-    borderRadius: 10,
-    elevation: 5,
-    minWidth: 300,
-  },
-  modalText: {
-    fontSize: 16,
-    marginBottom: 10,
-  },
-  input: {
-    borderWidth: 1,
-    borderColor: '#ccc',
-    borderRadius: 5,
-    padding: 10,
-    marginBottom: 15,
-  },
-});
 
 export default ViewFileModal;
